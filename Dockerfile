@@ -7,7 +7,7 @@ RUN apt-get update -qq && apt-get install -y \
   git-core \
   wget \
   unzip \
-  libcurl4-openssl-dev \ #Example of Linux libs needed for R packages
+  libcurl4-openssl-dev \
   libxml2-dev \
   libxml2  \
   libssl-dev \
