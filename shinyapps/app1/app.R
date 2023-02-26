@@ -6,6 +6,7 @@
 #
 #    http://shiny.rstudio.com/
 #
+df <- read.csv("../../demo_data.csv")
 
 library(shiny)
 
@@ -13,7 +14,7 @@ library(shiny)
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    titlePanel("Demo data"),
 
     # Sidebar with a slider input for number of bins 
     sidebarLayout(
@@ -37,7 +38,7 @@ server <- function(input, output) {
 
     output$distPlot <- renderPlot({
         # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
+        x    <- df[, 2]
         bins <- seq(min(x), max(x), length.out = input$bins + 1)
 
         # draw the histogram with the specified number of bins
