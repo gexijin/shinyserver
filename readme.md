@@ -1,7 +1,6 @@
 # Hosting Shiny apps via Nginx load balancer
 
- The free version of the Shiny server uses one R process and cannot handle more than a few concurrent users. In this repo, we set up a load balancer using Nginx that connects users with many instances of the Shiny server. 
- 
+ The free version of the Shiny server uses one R process and cannot handle more than a few concurrent users. In this repo, we set up a load balancer using Nginx that connects users with many instances of the Shiny server. This method is used in hosting [iDEP](http://bioinformatics.sdstate.edu/idep/) and  [ShinyGO](http://bioinformatics.sdstate.edu/go/).
 ## Prerequisites
   + A Linux server with port 80 open. This has been tested on Ubuntu and CentOS.
   + With Docker and Docker-compose installed. 
