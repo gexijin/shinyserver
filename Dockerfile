@@ -1,21 +1,21 @@
+# Dockerfile for shiny server
 FROM rocker/shiny-verse
 
 MAINTAINER Ge lab "xijin.ge@sdstate.edu"
 RUN apt-get update || apt-get update
 RUN apt-get update -qq && apt-get install -y \
   git-core \
-  libcurl4-openssl-dev \
+  wget \
+  unzip \
+  libcurl4-openssl-dev \ #Example of Linux libs needed for R packages
   libxml2-dev \
   libxml2  \
   libssl-dev \
   libudunits2-dev \
-  libmariadb-dev \
   libmariadbclient-dev \
   libpng-dev \
-  wget \
-  unzip \
+  libproj-dev \
   vim
-#RUN  apt-get install -y libgdal-dev gdal-bin libproj-dev proj-data proj-bin libgeos-dev 
 
 COPY ./config /usr/local/src/myscripts
 COPY ./shinyapps /srv/shiny-server
