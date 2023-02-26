@@ -1,0 +1,23 @@
+version: '2.2'
+services:
+  webapp:
+    build: .
+    image: webapp
+    expose:
+      - "3838"
+    volumes:
+      - ./shinyapps/:/srv/shiny-server/
+      - ./data/:/srv/data/
+      - ./shinylog/:/var/log/shiny-server/
+      - ./config/:/etc/shiny-server/
+      - ./classes/:/usr/local/src/myscripts/
+        #    command: ["/usr/bin/shiny-server.sh"]
+    
+  nginx:
+    build: ./nginx
+    image: nginx
+    cpus: 0.1
+    links:
+        - webapp
+    ports:
+        - "80:80"
