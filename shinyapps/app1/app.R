@@ -6,7 +6,7 @@
 #
 #    http://shiny.rstudio.com/
 #
-df <- read.csv("../../demo_data.csv")
+df <- read.csv("../../data/demo_data.csv")
 
 library(shiny)
 
