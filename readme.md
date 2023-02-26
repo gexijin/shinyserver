@@ -24,3 +24,10 @@ sudo sh restart.sh
 ```
 5. The two Shiny apps are hosted at http://xx.xxx.xxx.xxx/app1/ and http://xx.xxx.xxx.xxx/app2/. Note that xxx.xxx is your ip address. 
 App1 reads a local file stored in the data folder using relative path (../../data/)
+
+6. Now you can change the app1 and app2 code to your R code for the Shiny app. Remember that your data needs to be stored in the data folder, either in the repo or upload directly to the Linux server. After your are done with the development, you need to update your code from Github and restart the server.
+```
+cd ~/shinyserver/
+sudo git pull
+sudo sh restart.sh
+```
