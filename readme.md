@@ -1,24 +1,25 @@
 # Hosting Shiny apps via Nginx load balancer
 
- The free version of the Shiny server uses one R process and cannot handle more than a few concurrent users. In this repo, we set up a load balancer using Nginx that connects users with many instances of the Shiny server. This method is used in hosting [iDEP](http://bioinformatics.sdstate.edu/idep/) and  [ShinyGO](http://bioinformatics.sdstate.edu/go/).
+ The free version of the [Shiny server](https://posit.co/products/open-source/shinyserver/) uses one R process on a single CPU core. Therefore it can handle few concurrent users. In this repo, we set up a load balancer using Nginx that connects users with many instances of the Shiny server deployed as Docker containers. Developed by Kevin Son, a graduate student in the Ge lab, this method is used to host [iDEP](http://bioinformatics.sdstate.edu/idep/) and  [ShinyGO](http://bioinformatics.sdstate.edu/go/).
+ 
 ## Prerequisites
   + A Linux server with port 80 open. This has been tested on Ubuntu and CentOS.
-  + With Docker and Docker-compose installed. 
-  + Git installed. 
+  + Make sure [Docker](https://docs.docker.com/get-docker/) and [Docker-compose plug-in](https://docs.docker.com/compose/install/linux/) are  installed.
+  + Make sure [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) is installed.
 
 ## Steps
-1.  Fork this repository. This way you have a copy of the repo that you can modify later. 
-2.  Log in to the Linux server , clone your fork of the repository. You should use the URL from your forked repository.
+1.  Fork this repository, which contains two demo Shiny apps under the [shinyapps folder](https://github.com/gexijin/shinyserver/tree/main/shinyapps). You can replace these apps with your own once the server is set up. 
+2.  Log in to the Linux server, and clone the forked repository. Here I am using the URL for this repo.
  ```
  cd
  git clone https://github.com/gexijin/shinyserver.git
  ```
-3. Build Docker images for both the Shiny server and the Nginx load balancer. 
+3. Build Docker images.  The Shiny server image is based on the [shiny-verse](https://hub.docker.com/r/rocker/shiny-verse) image. The [nginx](https://hub.docker.com/_/nginx) image is used for load balancing. 
 ```
 cd ~/shinyserver/
 sudo sh setup.sh 
 ```
-4. Start the container. Your Shiny app is cloned 5 times in 5 Docker containers, which can run at the same time. You can change the script to run 30 instances. 
+4. Start the containers. Your Shiny app is cloned 5 times in 5 Docker containers, which can run at the same time. You can change the script to run 30 instances. These containers are managed by the Nginx container, as specified in the [Docker-compose.yml](https://github.com/gexijin/shinyserver/blob/main/docker-compose.yml) file. 
 ```
 sudo sh restart.sh
 ```
