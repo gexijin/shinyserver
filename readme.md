@@ -14,10 +14,17 @@
  cd
  git clone https://github.com/gexijin/shinyserver.git
  ```
-3. Build Docker images.  The Shiny server image is based on the [shiny-verse](https://hub.docker.com/r/rocker/shiny-verse) image. The [nginx](https://hub.docker.com/_/nginx) image is used for load balancing. 
+3. Build the Nginx Docker image as specified by this [Dockerfile](https://github.com/gexijin/shinyserver/blob/main/nginx/Dockerfile).
 ```
 cd ~/shinyserver/
-sudo sh setup.sh 
+sudo docker build ./nginx/. -t nginx  --pull
+```
+
+5. Build the Docker image for the Shiny server, as configured by this [Dockerfile](https://github.com/gexijin/shinyserver/blob/main/Dockerfile). This process might be slow, as all the R packages needed for the Shiny app needs to be pre-installed, using this [R sscript](https://github.com/gexijin/shinyserver/blob/main/config/librarySetup.R), which needs to be changed according to your app.
+
+```
+cd ~/shinyserver/
+docker build . -t webapp --pull
 ```
 4. Start the containers. Your Shiny app is cloned 5 times in 5 Docker containers, which can run at the same time. You can change the script to run 30 instances. These containers are managed by the Nginx container, as specified in the [Docker-compose.yml](https://github.com/gexijin/shinyserver/blob/main/docker-compose.yml) file. 
 ```
