@@ -4,7 +4,7 @@
  
 ## Prerequisites
   + A Linux server with port 80 open. This has been tested on Ubuntu and CentOS.
-  + Make sure [Docker](https://docs.docker.com/get-docker/) and [Docker-compose plug-in](https://docs.docker.com/compose/install/linux/) are  installed.
+  + Make sure [Docker](https://docs.docker.com/get-docker/) and [Docker-compose plug-in](https://docs.docker.com/compose/install/linux/) are  installed and the Docker engine is running.
   + Make sure [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) is installed.
 
 ## Steps
@@ -19,7 +19,7 @@
 cd ~/shinyserver/
 sudo docker build ./nginx/. -t nginx  --pull
 ```
-4. Build the Docker image for the Shiny server, as configured by this [Dockerfile](https://github.com/gexijin/shinyserver/blob/main/Dockerfile). This process might be slow, as all the R packages needed for the Shiny app needs to be pre-installed, using this [R sscript](https://github.com/gexijin/shinyserver/blob/main/config/librarySetup.R), which needs to be changed according to your app.
+4. Build the Docker image for the Shiny server, as configured by this [Dockerfile](https://github.com/gexijin/shinyserver/blob/main/Dockerfile). This process might be slow, as all the R packages needed for the Shiny app must be pre-installed, using this [R script](https://github.com/gexijin/shinyserver/blob/main/config/librarySetup.R), which needs to be changed according to your app.
 
 ```
 cd ~/shinyserver/
@@ -32,7 +32,7 @@ sudo sh restart.sh
 6. The two Shiny apps are hosted at http://xx.xxx.xxx.xxx/app1/ and http://xx.xxx.xxx.xxx/app2/. Note that xxx.xxx is your ip address. 
 App1 reads a local file stored in the data folder using relative path (../../data/)
 
-7. Replace the app and deploy. Now you can clone a local copy of the your forked repo to your laptop. Replace the app.R code under the  app1 folder with your own R code for the Shiny app. Remember that your data needs to be stored in the shinyserver/data folder, either in the repo or upload directly to the Linux server. After your are done with the development, push your code to GitHub. Then update your code on the Linux server and restart the server:
+7. Replace the apps and deploy. Now you can clone a local copy of your forked repo to your laptop. Replace the app.R code under the  app1 folder with your own R code for the Shiny app. Remember that your data needs to be stored in the shinyserver/data folder, either in the repo or upload directly to the Linux server. After your are done with the development, push your code to GitHub. Then update your code on the Linux server and restart the server:
 ```
 cd ~/shinyserver/
 sudo git pull
