@@ -5,11 +5,17 @@
 ## Prerequisites
   + A Linux server with port 80 open. This has been tested on Ubuntu and CentOS.
   + Make sure [Docker](https://docs.docker.com/get-docker/) and [Docker-compose plug-in](https://docs.docker.com/compose/install/linux/) are  installed and the Docker engine is running.
+  + 
   + Make sure [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) is installed.
 
 ## Steps
-1.  Fork this repository, which contains two demo Shiny apps under the [shinyapps folder](https://github.com/gexijin/shinyserver/tree/main/shinyapps). You can replace these apps with your own once the server is set up. 
-2.  Log in to the Linux server, and clone the forked repository. Here I am using the URL for this repo.
+1.  Install Docker and Docker-compose.
+    ```
+    curl -fsSL https://get.docker.com -o install_docker.sh
+    sudo sh install_docker.sh
+```
+3.  Fork this repository, which contains two demo Shiny apps under the [shinyapps folder](https://github.com/gexijin/shinyserver/tree/main/shinyapps). You can replace these apps with your own once the server is set up. 
+4.  Log in to the Linux server, and clone the forked repository. Here I am using the URL for this repo.
  ```
  cd
  git clone https://github.com/gexijin/shinyserver.git
