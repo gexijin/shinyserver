@@ -14,33 +14,33 @@
     sudo apt install docker-compose
     ```
 2.  Fork this repository, which contains two demo Shiny apps under the [shinyapps folder](https://github.com/gexijin/shinyserver/tree/main/shinyapps). You can replace these apps with your own once the server is set up. Log in to the Linux server, and clone the forked repository. Here I am using the URL for this repo.
- ```
- cd
- git clone https://github.com/gexijin/shinyserver.git
- ```
+   ```
+   cd
+   git clone https://github.com/gexijin/shinyserver.git
+   ```
 3. Build the Nginx Docker image as specified by this [Dockerfile](https://github.com/gexijin/shinyserver/blob/main/nginx/Dockerfile).
-```
-cd ~/shinyserver/
-sudo docker build ./nginx/. -t nginx  --pull
-```
+  ```
+  cd ~/shinyserver/
+  sudo docker build ./nginx/. -t nginx  --pull
+  ```
 4. Build the Docker image for the Shiny server, as configured by this [Dockerfile](https://github.com/gexijin/shinyserver/blob/main/Dockerfile). This process might be slow, as all the R packages needed for the Shiny app must be pre-installed, using this [R script](https://github.com/gexijin/shinyserver/blob/main/config/librarySetup.R), which needs to be changed according to your app. Note that the docker image has to be called 'webapp'.
 
-```
-cd ~/shinyserver/
-sudo docker build . -t webapp --pull
-```
+  ```
+  cd ~/shinyserver/
+  sudo docker build . -t webapp --pull
+  ```
 5. Start the containers. Your Shiny app is cloned in 30 Docker containers, which can run at the same time.  These containers are managed by the Nginx container, as specified in the [Docker-compose.yml](https://github.com/gexijin/shinyserver/blob/main/docker-compose.yml) file. Depending on your resources, you can change the number of containiners. Make sure you edit the [Nginx configuration file.](https://github.com/gexijin/shinyserver/blob/main/nginx/nginx.conf) and this command, so that they are exactly the same.
-```
-sudo docker-compose up -d --scale webapp=30
-```
+  ```
+  sudo docker-compose up -d --scale webapp=30
+  ```
 6. The two Shiny apps are hosted at http://xx.xxx.xxx.xxx/app1/ and http://xx.xxx.xxx.xxx/app2/. Note that xxx.xxx is your ip address. 
 App1 reads a local file stored in the data folder using relative path (../../data/). App2 is the demo app from RStudio.
 
 7. Replace the apps and deploy. Now you can clone a local copy of your forked repo to your laptop. Replace the app.R code under the  app1 folder with your own R code for the Shiny app. Remember that your data needs to be stored in the shinyserver/data folder, either in the repo or upload directly to the Linux server. After your are done with the development, push your code to GitHub. Then update your code on the Linux server and restart the server:
-```
-cd ~/shinyserver/
-sudo git pull
-sudo sh restart.sh
-```
+  ```
+  cd ~/shinyserver/
+  sudo git pull
+  sudo sh restart.sh
+  ```
 
 Please let [me](https://twitter.com/StevenXGe) know if you have any questions or comments. 
