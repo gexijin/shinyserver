@@ -41,8 +41,9 @@ App1 reads a local file stored in the data folder using relative path (../../dat
     ```
     cd ~/shinyserver/
     sudo git pull
-    sudo sh restart.sh
+    sudo docker-compose down  # shut down
+    sudo docker-compose up -d --scale webapp=30
     ```
 8. Data files. Your data needs to be stored in the shinyserver/data folder, either in the repo or upload directly to the Linux server. From the Shiny apps, these files can be read in by ```df <- read.csv("../../data/demo_data.csv")```.
-9. R packages. All the R packages needs to be listed in [LibrarySetup.R](https://github.com/gexijin/shinyserver/blob/main/config/librarySetup.R) file under the config folder. These packages needs to be installed when building the docker image for the Shiny server. 
+9. R packages. All the R packages need to be listed in [librarySetup.R](https://github.com/gexijin/shinyserver/blob/main/config/librarySetup.R) file under the config folder. These packages needs to be installed when building the docker image for the Shiny server. If a new package is added to your shiny app, the image needs to be rebuild by repeating step 5. 
 Please let [me](https://twitter.com/StevenXGe) know if you have any questions or comments. 
