@@ -18,8 +18,9 @@
    cd
    git clone https://github.com/gexijin/shinyserver.git
    ```
+
 3. Build the Nginx Docker image as specified by this [Dockerfile](https://github.com/gexijin/shinyserver/blob/main/nginx/Dockerfile).
-  ```
+    ```
   cd ~/shinyserver/
   sudo docker build ./nginx/. -t nginx  --pull
   ```
@@ -36,7 +37,7 @@
 6. The two Shiny apps are hosted at http://xx.xxx.xxx.xxx/app1/ and http://xx.xxx.xxx.xxx/app2/. Note that xxx.xxx is your ip address. 
 App1 reads a local file stored in the data folder using relative path (../../data/). App2 is the demo app from RStudio.
 
-7. Replace the apps and deploy. Now you can clone a local copy of your forked repo to your laptop. Replace the app.R code under the  app1 folder with your own R code for the Shiny app. Remember that your data needs to be stored in the shinyserver/data folder, either in the repo or upload directly to the Linux server. After your are done with the development, push your code to GitHub. Then update your code on the Linux server and restart the server:
+7. Replace the apps and deploy. Now you can clone a local copy of your forked repo to your laptop. Replace the app.R code under the  app1 folder with your own R code for the Shiny app. Remember that your data needs to be stored in the shinyserver/data folder, either in the repo or upload directly to the Linux server. From the Shiny apps, these files can be read in by ```df <- read.csv("../../data/demo_data.csv")```. After your are done with the development, push your code to GitHub. Then update your code on the Linux server and restart the server:
   ```
   cd ~/shinyserver/
   sudo git pull
