@@ -23,7 +23,7 @@
 cd ~/shinyserver/
 sudo docker build ./nginx/. -t nginx  --pull
 ```
-4. Build the Docker image for the Shiny server, as configured by this [Dockerfile](https://github.com/gexijin/shinyserver/blob/main/Dockerfile). This process might be slow, as all the R packages needed for the Shiny app must be pre-installed, using this [R script](https://github.com/gexijin/shinyserver/blob/main/config/librarySetup.R), which needs to be changed according to your app.
+4. Build the Docker image for the Shiny server, as configured by this [Dockerfile](https://github.com/gexijin/shinyserver/blob/main/Dockerfile). This process might be slow, as all the R packages needed for the Shiny app must be pre-installed, using this [R script](https://github.com/gexijin/shinyserver/blob/main/config/librarySetup.R), which needs to be changed according to your app. Note that the docker image has to be called 'webapp'.
 
 ```
 cd ~/shinyserver/
