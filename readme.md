@@ -3,9 +3,7 @@
  The free version of the [Shiny server](https://posit.co/products/open-source/shinyserver/) uses one R process on a single CPU core. Therefore it can handle few concurrent users. In this repo, we set up a load balancer using Nginx that connects users with many instances of the Shiny server deployed as Docker containers. Developed by Kevin Son, a graduate student in the Ge lab, this method is used to host [iDEP](http://bioinformatics.sdstate.edu/idep/) and  [ShinyGO](http://bioinformatics.sdstate.edu/go/).
  
 ## Prerequisites
-  + A Linux server with port 80 open. This has been tested on Ubuntu and CentOS.
-  + Make sure [Docker](https://docs.docker.com/get-docker/) and [Docker-compose plug-in](https://docs.docker.com/compose/install/linux/) are  installed and the Docker engine is running.
-  + 
+  + A Linux server with port 80 open. This has been tested on Ubuntu and CentOS. 
   + Make sure [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) is installed.
 
 ## Steps
