@@ -29,9 +29,9 @@ sudo docker build ./nginx/. -t nginx  --pull
 cd ~/shinyserver/
 sudo docker build . -t webapp --pull
 ```
-5. Start the containers. Your Shiny app is cloned 5 times in 5 Docker containers, which can run at the same time. You can change the script to run 30 instances. These containers are managed by the Nginx container, as specified in the [Docker-compose.yml](https://github.com/gexijin/shinyserver/blob/main/docker-compose.yml) file. 
+5. Start the containers. Your Shiny app is cloned in 30 Docker containers, which can run at the same time.  These containers are managed by the Nginx container, as specified in the [Docker-compose.yml](https://github.com/gexijin/shinyserver/blob/main/docker-compose.yml) file. Depending on your resources, you can change the number of containiners. Make sure you edit the [Nginx configuration file.](https://github.com/gexijin/shinyserver/blob/main/nginx/nginx.conf) and this command, so that they are exactly the same.
 ```
-sudo docker-compose up -d --scale webapp=5
+sudo docker-compose up -d --scale webapp=30
 ```
 6. The two Shiny apps are hosted at http://xx.xxx.xxx.xxx/app1/ and http://xx.xxx.xxx.xxx/app2/. Note that xxx.xxx is your ip address. 
 App1 reads a local file stored in the data folder using relative path (../../data/). App2 is the demo app from RStudio.
