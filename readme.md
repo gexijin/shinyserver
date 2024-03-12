@@ -11,6 +11,7 @@
     ```
     curl -fsSL https://get.docker.com -o install_docker.sh
     sudo sh install_docker.sh
+    sudo apt install docker-compose
     ```
 2.  Fork this repository, which contains two demo Shiny apps under the [shinyapps folder](https://github.com/gexijin/shinyserver/tree/main/shinyapps). You can replace these apps with your own once the server is set up. Log in to the Linux server, and clone the forked repository. Here I am using the URL for this repo.
  ```
