@@ -1,6 +1,6 @@
 # Hosting Shiny apps via Nginx load balancer
 
- The free version of the [Shiny server](https://posit.co/products/open-source/shinyserver/) uses one R process on a single CPU core. Therefore it can handle few concurrent users. In this repo, we set up a load balancer using Nginx that connects users with many instances of the Shiny server deployed as Docker containers. Developed by Kevin Son, a graduate student in the Ge lab, this method is used to host [iDEP](http://bioinformatics.sdstate.edu/idep/) and  [ShinyGO](http://bioinformatics.sdstate.edu/go/).  To enable https protocol using SSL certificates like [https://RTutor.ai](https://RTutor.ai), see this [repo](https://github.com/gexijin/RTutor_server).
+ The free version of the [Shiny server](https://posit.co/products/open-source/shinyserver/) uses one R process on a single CPU core. Therefore it can handle few concurrent users. In this repo, we set up a load balancer using Nginx that connects users with one of the many instances of the Shiny server deployed as Docker containers. Developed by Kevin Son, a graduate student in the Ge lab, this method is used to host [iDEP](http://bioinformatics.sdstate.edu/idep/) and  [ShinyGO](http://bioinformatics.sdstate.edu/go/).  To enable https protocol using SSL certificates like [https://RTutor.ai](https://RTutor.ai), see this [repo](https://github.com/gexijin/RTutor_server).
  
 ## Prerequisites
   + A Linux server with port 80 open. This has been tested on Ubuntu and CentOS. 
