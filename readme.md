@@ -1,9 +1,11 @@
 # Scaling Shiny apps securely
-
+See [main branch](https://github.com/gexijin/shinyserver) for http version.
  The free version of the [Shiny server](https://posit.co/products/open-source/shinyserver/) uses one R process on a single CPU core. Therefore it can handle few concurrent users. In this repo, we set up a load balancer using Nginx that connects users with one of the many instances of the Shiny server deployed as Docker containers. Developed by Kevin Son, a graduate student in the Ge lab, this method has been used to host large apps like [iDEP](http://bioinformatics.sdstate.edu/idep/) and  [ShinyGO](http://bioinformatics.sdstate.edu/go/) for many years.  To enable the https protocol, a similar [setup](https://github.com/gexijin/RTutor_server) is used by [https://RTutor.ai](https://RTutor.ai) and [https://Chatlize.ai](https://chatlize.ai).
  
+ 
 ## Prerequisites
-  + A Linux server with port 80 and 443 open. This has been tested on Ubuntu and CentOS. 
+  + A Linux server with port 80 and 443 open. This has been tested on Ubuntu and CentOS.
+  + A SSL certificate for https
   + Make sure [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) is installed.
 
 ## Steps
