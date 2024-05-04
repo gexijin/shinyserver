@@ -30,9 +30,9 @@
     cd ~/shinyserver/
     sudo docker build . -t webapp --pull
     ```
-5. Start the containers. Your Shiny app is cloned in 30 Docker containers, which can run at the same time.  These containers are managed by the Nginx container, as specified in the [Docker-compose.yml](https://github.com/gexijin/shinyserver/blob/main/docker-compose.yml) file. Depending on your resources, you can change the number of containiners. Make sure you edit the [Nginx configuration file.](https://github.com/gexijin/shinyserver/blob/main/nginx/nginx.conf) and this command, so that they are exactly the same.
+5. Start the containers. Your Shiny app is cloned in 10 Docker containers, which can run at the same time.  These containers are managed by the Nginx container, as specified in the [Docker-compose.yml](https://github.com/gexijin/shinyserver/blob/main/docker-compose.yml) file. Depending on your resources, you can change the number of containiners. Make sure you edit the [Nginx configuration file.](https://github.com/gexijin/shinyserver/blob/main/nginx/nginx.conf) and this command, so that they are exactly the same.
     ```
-    sudo docker-compose up -d --scale webapp=30
+    sudo docker-compose up -d --scale webapp=10
     ```
 6. The two Shiny apps are hosted at http://xx.xxx.xxx.xxx/app1/ and http://xx.xxx.xxx.xxx/app2/. Note that xxx.xxx is your ip address. 
 App1 reads a local file stored in the data folder using relative path (../../data/). App2 is the demo app from RStudio.
@@ -42,7 +42,7 @@ App1 reads a local file stored in the data folder using relative path (../../dat
     cd ~/shinyserver/
     sudo git pull
     sudo docker-compose down  # shut down
-    sudo docker-compose up -d --scale webapp=30
+    sudo docker-compose up -d --scale webapp=10
     ```
 8. Data files. Your data needs to be stored in the shinyserver/data folder, either in the repo or upload directly to the Linux server. From the Shiny apps, these files can be read in by ```df <- read.csv("../../data/demo_data.csv")```.
 9. R packages. All the R packages need to be listed in [librarySetup.R](https://github.com/gexijin/shinyserver/blob/main/config/librarySetup.R) file under the config folder. These packages needs to be installed when building the docker image for the Shiny server. If a new package is added to your shiny app, the image needs to be rebuild by repeating step 5. 
